@@ -1,0 +1,39 @@
+package com.munna.urlshortener.controller;
+
+import com.munna.urlshortener.service.UrlShortenerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map; // ✅ REQUIRED import!
+
+@RestController
+@RequestMapping("/")
+public class UrlShortenerController {
+
+    @Autowired
+    private UrlShortenerService service;
+
+    @PostMapping("/shorten")
+    public ResponseEntity<String> shortenUrl(@RequestBody Map<String, String> request) {
+        String originalUrl = request.get("url");
+        String shortUrl = service.shortenUrl(originalUrl);
+        return ResponseEntity.ok(shortUrl);
+    }
+
+    @GetMapping("/{shortUrlCode}")
+    public ResponseEntity<?> redirect(@PathVariable String shortUrlCode) {
+        System.out.println("Redirect request received for: " + shortUrlCode);
+
+        String originalUrl = service.getOriginalUrl(shortUrlCode);
+
+        if (originalUrl != null) {
+            System.out.println("Redirecting to: " + originalUrl);
+            return ResponseEntity.status(302)
+                                 .header("Location", originalUrl)
+                                 .build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
