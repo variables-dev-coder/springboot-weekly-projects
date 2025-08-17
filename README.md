@@ -12,7 +12,7 @@ Hi, I'm Munna! Every Sunday, I build a new backend mini-project using Java and S
 | Week | Project | Description |
 |------|---------|-------------|
 | 01   | [URL Shortener](./Week01-URL-Shortener) | REST API that converts long URLs into short ones and handles redirection. |
-| 02   | [Notes API](./Week02-user-management) | RESTful API to create, update, fetch all, fetch by id, up date by id, delete by id. |
+| 02   | [user-management](./Week02-user-management) | RESTful API to create, update, fetch all, fetch by id, up date by id, delete by id. |
 | 03   | [Reminder Scheduler](./Week03-Scheduler-App) | App that schedules reminders using `@Scheduled` and cron logic. |
 | ...  | Coming soon | More awesome backend ideas every week! |
 
