@@ -1,5 +1,0 @@
-package com.munna.urlshortener.dto;
-
-public class ClickStatsDto {
-
-}
